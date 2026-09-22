@@ -1,0 +1,2794 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0B1120">
+    <title>ROYAL ELITE — Business & Real Estate Consultant</title>
+    <link rel="icon" type="image/x-icon" href="logo.jfif">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E2C97E;
+            --gold-dark: #A8863A;
+            --gold-pale: rgba(201, 168, 76, 0.15);
+            --navy: #0B1120;
+            --navy-warm: #0F1628;
+            --navy-light: #131E35;
+            --charcoal: #182030;
+            --charcoal-light: #1E2A3D;
+            --white: #FFFFFF;
+            --off-white: #F7F5F0;
+            --cream: #EDE8DC;
+            --text-body: #C8CDD6;
+            --text-muted: #7B8598;
+            --text-dark: #3A4254;
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--navy);
+            color: var(--white);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Cinzel', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+            width: 100%;
+        }
+
+        .container-wide {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 32px;
+            width: 100%;
+        }
+
+        /* ===== GOLD DIVIDER ===== */
+        .gold-line {
+            width: 60px;
+            height: 2px;
+            background: var(--gold);
+            margin: 0 auto;
+        }
+
+        .gold-line-left {
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(11, 17, 32, 0.98);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .navbar.scrolled {
+            background: rgba(11, 17, 32, 0.95);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            height: 50px;
+            width: auto;
+            border-radius: 6px;
+            display: block;
+            flex-shrink: 0;
+            transition: height 0.3s ease;
+        }
+
+        .nav-brand .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nav-brand .brand-name {
+            font-family: 'Cinzel', serif;
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 2px;
+            line-height: 1.1;
+        }
+
+        .nav-brand .brand-tagline {
+            font-size: 8px;
+            letter-spacing: 2px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: var(--text-body);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.35s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--white);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .btn-gold {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 24px;
+            border: 1px solid var(--gold);
+            color: var(--navy);
+            background: var(--gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.35s;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+            color: var(--navy);
+            box-shadow: 0 6px 20px rgba(201, 168, 76, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            color: var(--gold);
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-icon {
+            width: 20px;
+            height: 15px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .hamburger-icon span {
+            display: block;
+            height: 2px;
+            width: 100%;
+            background: var(--gold);
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
+        }
+
+        .mobile-toggle.active .hamburger-icon span:nth-child(1) {
+            transform: translateY(6.5px) rotate(45deg);
+        }
+
+        .mobile-toggle.active .hamburger-icon span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+
+        .mobile-toggle.active .hamburger-icon span:nth-child(3) {
+            transform: translateY(-6.5px) rotate(-45deg);
+        }
+
+        .mobile-menu-cta {
+            display: none;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            width: 100%;
+            margin-top: 86px;
+        }
+
+        .hero img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== SEARCH CARD ===== */
+        .search-section {
+            position: relative;
+            z-index: 10;
+            margin-top: -100px;
+            padding-bottom: 100px;
+        }
+
+        .search-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(28px);
+            -webkit-backdrop-filter: blur(28px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 44px 48px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 0.9s 1.3s forwards;
+        }
+
+        .search-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 32px;
+            color: var(--white);
+            letter-spacing: -0.3px;
+        }
+
+        .search-fields {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr) auto;
+            gap: 14px;
+            align-items: end;
+        }
+
+        .search-field label {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .search-field label svg {
+            width: 14px;
+            height: 14px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .search-field select,
+        .search-field input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--white);
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+
+        .search-field select:focus,
+        .search-field input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .search-field select option {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .search-field .select-arrow {
+            position: relative;
+        }
+
+        .search-field .select-arrow::after {
+            content: '';
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            width: 0;
+            height: 0;
+            border-left: 4px solid transparent;
+            border-right: 4px solid transparent;
+            border-top: 5px solid var(--text-muted);
+            pointer-events: none;
+        }
+
+        .btn-search {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 15px 30px;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 14px;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.35s;
+            white-space: nowrap;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.2px;
+        }
+
+        .btn-search:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(201, 168, 76, 0.3);
+        }
+
+        /* ===== INTRO ===== */
+        .intro {
+            background: var(--off-white);
+            color: var(--navy);
+            padding: 140px 0;
+            position: relative;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .intro-label {
+            font-size: 11px;
+            letter-spacing: 5px;
+            color: var(--gold-dark);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .intro-label::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--gold-dark);
+        }
+
+        .intro-heading {
+            font-size: clamp(30px, 3.8vw, 46px);
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            color: var(--navy);
+            letter-spacing: -0.3px;
+        }
+
+        .intro-text {
+            font-size: 16px;
+            color: var(--navy);
+            line-height: 1.85;
+            margin-bottom: 44px;
+            font-weight: 500;
+            max-width: 480px;
+        }
+
+        .intro-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .highlight-item {
+            padding: 30px 24px;
+            background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F5 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(201, 168, 76, 0.28);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 32px rgba(11, 17, 32, 0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .highlight-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: left;
+        }
+
+        .highlight-item:hover::before {
+            transform: scaleX(1);
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-6px);
+            border-color: rgba(201, 168, 76, 0.65);
+            box-shadow: 0 22px 48px rgba(201, 168, 76, 0.18), 0 12px 28px rgba(11, 17, 32, 0.08);
+        }
+
+        .highlight-item .hl-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.2) 0%, rgba(201, 168, 76, 0.05) 100%);
+            border: 1.5px solid rgba(201, 168, 76, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 18px rgba(201, 168, 76, 0.14), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .highlight-item:hover .hl-icon {
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            border-color: var(--gold);
+            transform: translateY(-2px) scale(1.08);
+            box-shadow: 0 10px 25px rgba(201, 168, 76, 0.4);
+        }
+
+        .highlight-item .hl-icon svg {
+            width: 26px;
+            height: 26px;
+            color: var(--gold-dark);
+            transition: color 0.35s ease, transform 0.35s ease;
+        }
+
+        .highlight-item:hover .hl-icon svg {
+            color: #FFFFFF;
+        }
+
+        .highlight-item h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .highlight-item p {
+            font-size: 13.5px;
+            color: #4A5568;
+            line-height: 1.6;
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .intro-image-wrap {
+            position: relative;
+        }
+
+        .intro-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .intro-image:hover img {
+            transform: scale(1.04);
+        }
+
+        .intro-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(11, 17, 32, 0.25), transparent 50%);
+        }
+
+        .intro-image-accent {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        /* ===== FEATURED PROPERTIES ===== */
+        .properties {
+            background:
+                radial-gradient(circle at 50% 0%, rgba(201, 168, 76, 0.12) 0%, transparent 60%),
+                radial-gradient(circle at 100% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 50%),
+                linear-gradient(180deg, #070B14 0%, #0C1322 50%, #060A12 100%);
+            padding: 130px 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        }
+
+        .properties::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1px;
+            height: 70px;
+            background: linear-gradient(to bottom, transparent, var(--gold));
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            font-size: 11px;
+            letter-spacing: 5px;
+            color: var(--gold);
+            text-transform: uppercase;
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .section-label::before,
+        .section-label::after {
+            content: '';
+            width: 24px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+
+        .section-title {
+            font-size: clamp(30px, 3.8vw, 46px);
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
+        }
+
+        .section-subtitle {
+            font-size: 15.5px;
+            color: #94A3B8;
+            font-weight: 400;
+            max-width: 500px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 28px;
+        }
+
+        .property-card {
+            background: linear-gradient(160deg, rgba(22, 31, 50, 0.9) 0%, rgba(11, 17, 30, 0.95) 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(201, 168, 76, 0.22);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+            opacity: 1;
+            transform: translateY(0);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 30px rgba(201, 168, 76, 0.2);
+            border-color: rgba(201, 168, 76, 0.6);
+        }
+
+        .property-card-img {
+            position: relative;
+            aspect-ratio: 16/10;
+            overflow: hidden;
+        }
+
+        .property-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .property-card:hover .property-card-img img {
+            transform: scale(1.08);
+        }
+
+        .property-card-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(11, 17, 30, 0.75) 0%, transparent 60%);
+        }
+
+        .property-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: var(--navy);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            z-index: 2;
+        }
+
+        .property-card-body {
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .property-card-body h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--white);
+            letter-spacing: 0.3px;
+        }
+
+        .property-location {
+            font-size: 13.5px;
+            color: #94A3B8;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-weight: 500;
+        }
+
+        .property-location svg {
+            width: 15px;
+            height: 15px;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .property-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 18px;
+            margin-top: 10px;
+        }
+
+        .property-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Cinzel', serif;
+            letter-spacing: 0.5px;
+            margin: 0;
+        }
+
+        .property-link {
+            font-size: 12.5px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(201, 168, 76, 0.1);
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            transition: all 0.35s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .property-link:hover {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+            box-shadow: 0 4px 15px rgba(201, 168, 76, 0.35);
+        }
+
+        .property-link svg {
+            width: 13px;
+            height: 13px;
+            transition: transform 0.3s;
+        }
+
+        .property-link:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* ===== WHY ROYAL ELITE ===== */
+        .why {
+            background:
+                radial-gradient(circle at 15% 20%, rgba(201, 168, 76, 0.1) 0%, transparent 45%),
+                radial-gradient(circle at 85% 80%, rgba(201, 168, 76, 0.08) 0%, transparent 45%),
+                linear-gradient(180deg, #0A0F1E 0%, #10192D 50%, #080D18 100%);
+            padding: 130px 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(201, 168, 76, 0.15);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .why-card {
+            background: linear-gradient(145deg, rgba(25, 35, 55, 0.75) 0%, rgba(13, 19, 32, 0.9) 100%);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(201, 168, 76, 0.22);
+            border-radius: 20px;
+            padding: 42px 28px;
+            transition: all 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+            opacity: 1;
+            transform: translateY(0);
+            position: relative;
+        }
+
+        .why-card:hover {
+            border-color: rgba(201, 168, 76, 0.6);
+            transform: translateY(-8px);
+            box-shadow: 0 24px 56px rgba(0, 0, 0, 0.5), 0 0 25px rgba(201, 168, 76, 0.18);
+            background: linear-gradient(145deg, rgba(32, 44, 68, 0.85) 0%, rgba(16, 24, 40, 0.95) 100%);
+        }
+
+        .why-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.2) 0%, rgba(201, 168, 76, 0.05) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            border: 1.5px solid rgba(201, 168, 76, 0.35);
+            box-shadow: 0 4px 15px rgba(201, 168, 76, 0.15);
+            transition: all 0.35s ease;
+        }
+
+        .why-card:hover .why-icon {
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: scale(1.08);
+            box-shadow: 0 0 20px rgba(201, 168, 76, 0.4);
+        }
+
+        .why-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--gold);
+            transition: color 0.35s ease;
+        }
+
+        .why-card:hover .why-icon svg {
+            color: var(--navy);
+        }
+
+        .why-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--white);
+            letter-spacing: 0.3px;
+        }
+
+        .why-card p {
+            font-size: 14.5px;
+            color: #CBD5E1;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .why-card .card-num {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            color: rgba(201, 168, 76, 0.3);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials {
+            background: linear-gradient(180deg, #FAF8F5 0%, #F3EFE8 100%);
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+            border-top: 1px solid rgba(201, 168, 76, 0.25);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(201, 168, 76, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .testimonials-header-wrap {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 48px;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .testimonials-header-left {
+            max-width: 620px;
+        }
+
+        .testimonials-header-left .section-label {
+            justify-content: flex-start;
+            margin-bottom: 14px;
+            color: var(--gold-dark);
+            font-weight: 600;
+        }
+
+        .testimonials-header-left .section-label::before {
+            background: var(--gold-dark);
+        }
+
+        .testimonials-header-left .section-label::after {
+            display: none;
+        }
+
+        .testimonials-header-left .section-title {
+            color: var(--navy);
+            text-align: left;
+            margin-bottom: 10px;
+            font-size: clamp(28px, 3.6vw, 42px);
+        }
+
+        .testimonials-header-left .section-subtitle {
+            color: #556275;
+            text-align: left;
+            margin: 0;
+            font-size: 15px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .testi-nav-btns {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testi-btn {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            border: 1.5px solid rgba(201, 168, 76, 0.45);
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 18px rgba(11, 17, 32, 0.08);
+        }
+
+        .testi-btn svg {
+            width: 22px;
+            height: 22px;
+            transition: transform 0.3s ease;
+        }
+
+        .testi-btn:hover {
+            background: var(--gold);
+            color: #FFFFFF;
+            border-color: var(--gold);
+            transform: scale(1.08);
+            box-shadow: 0 8px 24px rgba(201, 168, 76, 0.35);
+        }
+
+        .testi-btn:hover.prev-btn svg {
+            transform: translateX(-2px);
+        }
+
+        .testi-btn:hover.next-btn svg {
+            transform: translateX(2px);
+        }
+
+        .testi-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* Testimonial Carousel Track */
+        .testimonial-carousel-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 10px 4px 20px;
+            user-select: none;
+        }
+
+        .testimonial-track {
+            display: flex;
+            gap: 24px;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            will-change: transform;
+        }
+
+        .testimonial-card {
+            flex: 0 0 calc(33.333% - 16px);
+            min-width: 0;
+            background: #FFFFFF;
+            border: 1px solid rgba(201, 168, 76, 0.22);
+            border-radius: 20px;
+            padding: 38px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 10px 30px rgba(11, 17, 32, 0.05), 0 2px 6px rgba(0, 0, 0, 0.02);
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(201, 168, 76, 0.65);
+            box-shadow: 0 20px 48px rgba(201, 168, 76, 0.16), 0 12px 28px rgba(11, 17, 32, 0.06);
+        }
+
+        .testimonial-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-stars {
+            color: #E29B12;
+            font-size: 17px;
+            letter-spacing: 3px;
+        }
+
+        .testimonial-quote-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--gold);
+            opacity: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonial-quote-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .testimonial-text {
+            font-size: 15.5px;
+            color: #2D3748;
+            line-height: 1.75;
+            font-weight: 500;
+            margin-bottom: 26px;
+            font-style: italic;
+            position: relative;
+            flex-grow: 1;
+        }
+
+        .testimonial-author-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-top: 1px solid rgba(11, 17, 32, 0.06);
+            padding-top: 20px;
+        }
+
+        .testimonial-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 15px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px rgba(201, 168, 76, 0.3);
+        }
+
+        .testimonial-author-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .testimonial-author-name {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 0.5px;
+            margin-bottom: 3px;
+        }
+
+        .testimonial-author-badge {
+            font-size: 11px;
+            color: var(--gold-dark);
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-transform: uppercase;
+        }
+
+        .testimonial-author-badge svg {
+            width: 13px;
+            height: 13px;
+            color: #27AE60;
+        }
+
+        /* Carousel Bottom Bar */
+        .testimonial-bottom-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 36px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .testimonial-dots {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .testi-dot {
+            width: 12px;
+            height: 8px;
+            border-radius: 10px;
+            background: rgba(11, 17, 32, 0.15);
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            padding: 0;
+        }
+
+        .testi-dot.active {
+            width: 32px;
+            background: var(--gold);
+            box-shadow: 0 0 10px rgba(201, 168, 76, 0.5);
+        }
+
+        .testimonial-rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #FFFFFF;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            padding: 10px 22px;
+            border-radius: 30px;
+            box-shadow: 0 4px 16px rgba(11, 17, 32, 0.06);
+        }
+
+        .testimonial-rating-badge .stars {
+            color: #E29B12;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-rating-badge .score {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--navy);
+            font-family: 'Cinzel', serif;
+        }
+
+        .testimonial-rating-badge .label {
+            font-size: 12px;
+            color: #556275;
+            border-left: 1px solid rgba(11, 17, 32, 0.12);
+            padding-left: 12px;
+        }
+
+        /* ===== CTA ===== */
+        .cta {
+            position: relative;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=2400&q=85') center/cover no-repeat;
+        }
+
+        .cta-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(160deg, rgba(11, 17, 32, 0.92) 0%, rgba(11, 17, 32, 0.75) 50%, rgba(11, 17, 32, 0.85) 100%),
+                linear-gradient(to right, rgba(11, 17, 32, 0.5), transparent 60%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 120px 32px;
+            width: 100%;
+        }
+
+        .cta-gold-line {
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+            margin: 0 auto 32px;
+            opacity: 0;
+            animation: fadeUp 0.8s 0.2s forwards;
+        }
+
+        .cta-title {
+            font-size: clamp(30px, 4.5vw, 52px);
+            font-weight: 600;
+            margin-bottom: 22px;
+            color: var(--white);
+            letter-spacing: -0.5px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.9s 0.35s forwards;
+        }
+
+        .cta-text {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 460px;
+            margin: 0 auto 44px;
+            font-weight: 300;
+            line-height: 1.7;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.9s 0.5s forwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.9s 0.65s forwards;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #070C17;
+            padding: 70px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2.2fr 1fr 1fr;
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-brand .brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+        }
+
+        .footer-brand .brand-tag {
+            font-size: 10px;
+            color: var(--gold);
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .footer-brand p {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .footer-brand .footer-contact {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer-brand .footer-contact a {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .footer-col h4 {
+            font-size: 11px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--white);
+            margin-bottom: 22px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 13px;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.25);
+            letter-spacing: 0.3px;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom-links a {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--gold);
+        }
+
+        /* ===== RESPONSIVE MEDIA QUERIES ===== */
+        @media (max-width: 1024px) {
+            .search-fields {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .why-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 40px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .intro-image {
+                aspect-ratio: 16/10;
+            }
+
+            .property-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+
+            .testimonial-card {
+                flex: 0 0 calc(50% - 12px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container,
+            .container-wide {
+                padding: 0 18px;
+            }
+
+            /* Navbar */
+            .navbar {
+                padding: 10px 0;
+            }
+
+            .navbar.scrolled {
+                padding: 8px 0;
+            }
+
+            .brand-logo {
+                height: 38px;
+            }
+
+            .nav-brand {
+                gap: 10px;
+            }
+
+            .nav-brand .brand-name {
+                font-size: 16px;
+                letter-spacing: 1.2px;
+            }
+
+            .nav-brand .brand-tagline {
+                font-size: 7.5px;
+                letter-spacing: 1.2px;
+                margin-top: 3px;
+            }
+
+            .nav-right .btn-gold {
+                display: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(11, 17, 32, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                padding: 18px 20px 24px;
+                gap: 6px;
+                border-bottom: 2px solid var(--gold);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+                animation: slideDown 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-8px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-links a {
+                padding: 12px 14px;
+                font-size: 14px;
+                border-radius: 6px;
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-links a:hover,
+            .nav-links a.active {
+                background: rgba(201, 168, 76, 0.12);
+                color: var(--gold-light);
+            }
+
+            .nav-links a::after {
+                display: none;
+            }
+
+            .mobile-menu-cta {
+                display: block;
+                margin-top: 10px;
+                width: 100%;
+                text-align: center;
+                padding: 12px 20px;
+                background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+                color: var(--navy);
+                font-weight: 700;
+                font-size: 13px;
+                border-radius: 8px;
+                text-decoration: none;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3);
+                border-bottom: none !important;
+            }
+
+            /* Hero */
+            .hero {
+                margin-top: 62px;
+            }
+
+            /* Search Card */
+            .search-section {
+                margin-top: 15px;
+                padding-bottom: 40px;
+            }
+
+            .search-card {
+                padding: 22px 18px;
+                border-radius: 16px;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+                transform: none;
+                opacity: 1;
+                animation: none;
+            }
+
+            .search-title {
+                font-size: 19px;
+                margin-bottom: 18px;
+                text-align: center;
+            }
+
+            .search-fields {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .search-field label {
+                font-size: 10.5px;
+                margin-bottom: 6px;
+            }
+
+            .search-field select,
+            .search-field input {
+                font-size: 16px;
+                padding: 12px 14px;
+            }
+
+            .btn-search {
+                width: 100%;
+                justify-content: center;
+                padding: 13px;
+                font-size: 14px;
+                margin-top: 4px;
+            }
+
+            /* Intro */
+            .intro {
+                padding: 55px 0;
+            }
+
+            .intro-grid {
+                gap: 32px;
+            }
+
+            .intro-heading {
+                font-size: 24px;
+                margin-bottom: 14px;
+            }
+
+            .intro-text {
+                font-size: 14px;
+                line-height: 1.7;
+                margin-bottom: 26px;
+            }
+
+            .intro-highlights {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .highlight-item {
+                padding: 18px 16px;
+                border-radius: 14px;
+            }
+
+            .highlight-item .hl-icon {
+                width: 44px;
+                height: 44px;
+                border-radius: 12px;
+                margin-bottom: 14px;
+            }
+
+            .highlight-item .hl-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .highlight-item h4 {
+                font-size: 15px;
+            }
+
+            .highlight-item p {
+                font-size: 13px;
+            }
+
+            .intro-image-accent {
+                display: none;
+            }
+
+            .intro-image {
+                aspect-ratio: 16/11;
+                border-radius: 16px;
+            }
+
+            /* Properties */
+            .properties {
+                padding: 55px 0;
+            }
+
+            .section-header {
+                margin-bottom: 32px;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+
+            .section-subtitle {
+                font-size: 13.5px;
+                line-height: 1.6;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .property-card {
+                border-radius: 16px;
+            }
+
+            .property-card-body {
+                padding: 18px 16px;
+            }
+
+            .property-card-body h3 {
+                font-size: 17px;
+            }
+
+            .property-price {
+                font-size: 16.5px;
+            }
+
+            /* Why Choose Us */
+            .why {
+                padding: 55px 0;
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .why-card {
+                padding: 22px 18px;
+                border-radius: 16px;
+            }
+
+            .why-icon {
+                width: 44px;
+                height: 44px;
+                margin-bottom: 16px;
+            }
+
+            .why-card h3 {
+                font-size: 16.5px;
+            }
+
+            .why-card p {
+                font-size: 13.5px;
+            }
+
+            .why-card .card-num {
+                top: 18px;
+                right: 18px;
+                font-size: 14px;
+            }
+
+            /* Testimonials */
+            .testimonials {
+                padding: 55px 0;
+            }
+
+            .testimonials-header-wrap {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+                margin-bottom: 22px;
+            }
+
+            .testimonials-header-left .section-title {
+                font-size: 24px;
+            }
+
+            .testi-nav-btns {
+                width: 100%;
+                justify-content: flex-end;
+                gap: 10px;
+            }
+
+            .testi-btn {
+                width: 42px;
+                height: 42px;
+            }
+
+            .testimonial-card {
+                flex: 0 0 100%;
+                min-width: 100%;
+                padding: 22px 18px;
+                border-radius: 16px;
+            }
+
+            .testimonial-text {
+                font-size: 14px;
+                margin-bottom: 18px;
+            }
+
+            .testimonial-bottom-bar {
+                flex-direction: column;
+                gap: 16px;
+                align-items: center;
+                justify-content: center;
+                margin-top: 22px;
+            }
+
+            /* Footer */
+            .footer {
+                padding: 40px 0 85px; /* Extra bottom padding for mobile sticky action bar */
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                margin-bottom: 30px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 14px;
+            }
+
+            .footer-bottom-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 14px;
+            }
+        }
+
+        /* ===== MOBILE FLOATING ACTION BAR ===== */
+        .mobile-bottom-bar {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-bar {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 999;
+                background: rgba(11, 17, 32, 0.96);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-top: 1px solid rgba(201, 168, 76, 0.35);
+                padding: 8px 12px;
+                padding-bottom: max(8px, env(safe-area-inset-bottom));
+                justify-content: space-around;
+                align-items: center;
+                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.6);
+            }
+
+            .mobile-action-btn {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+                padding: 10px 8px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-size: 12.5px;
+                font-weight: 600;
+                font-family: 'Montserrat', sans-serif;
+                letter-spacing: 0.3px;
+                text-align: center;
+                transition: all 0.2s ease;
+            }
+
+            .mobile-action-btn.call-btn {
+                background: rgba(201, 168, 76, 0.15);
+                color: var(--gold-light);
+                border: 1px solid rgba(201, 168, 76, 0.4);
+                margin-right: 8px;
+            }
+
+            .mobile-action-btn.call-btn:hover {
+                background: rgba(201, 168, 76, 0.25);
+            }
+
+            .mobile-action-btn.whatsapp-btn {
+                background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+                color: #FFFFFF;
+                border: none;
+                box-shadow: 0 2px 10px rgba(37, 211, 102, 0.3);
+            }
+
+            .mobile-action-btn svg {
+                width: 16px;
+                height: 16px;
+                flex-shrink: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="logo.jfif" alt="Royal Elite Logo" class="brand-logo">
+                <div class="brand-text">
+                    <div class="brand-name">ROYAL ELITE</div>
+                    <div class="brand-tagline">Business & Real Estate Consultant</div>
+                </div>
+            </div>
+            <div class="nav-right">
+                <div class="nav-links" id="navLinks">
+                    <a href="#home" class="active">Home</a>
+                    <a href="#properties">Properties</a>
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                    <a href="tel:06362907007" class="mobile-menu-cta">Enquire Now — 063629 07007</a>
+                </div>
+                <a href="#contact" class="btn-gold">Enquire Now</a>
+            </div>
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+                <span class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <img src="banner.png" alt="Royal Elite Banner">
+    </section>
+
+    <!-- SEARCH CARD -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-card">
+                <h2 class="search-title">What are you looking for?</h2>
+                <div class="search-fields">
+                    <div class="search-field">
+                        <label>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/>
+                            </svg>
+                            I'm Looking For
+                        </label>
+                        <div class="select-arrow">
+                            <select>
+                                <option>Buy</option>
+                                <option>Sell</option>
+                                <option>Rent</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 21h18"/>
+                                <path d="M4 21V9l8-5 8 5v12"/>
+                                <path d="M9 21v-7a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v7"/>
+                                <path d="M9 9h.01M15 9h.01"/>
+                            </svg>
+                            Property Type
+                        </label>
+                        <div class="select-arrow">
+                            <select>
+                                <option>Apartment</option>
+                                <option>Villa</option>
+                                <option>Plot</option>
+                                <option>Commercial</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="search-field">
+                        <label>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            Location
+                        </label>
+                        <input type="text" value="Bengaluru" readonly>
+                    </div>
+                    <div class="search-field">
+                        <label>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="6" width="20" height="12" rx="2"/>
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M6 12h.01M18 12h.01"/>
+                            </svg>
+                            Budget
+                        </label>
+                        <div class="select-arrow">
+                            <select>
+                                <option>Select Budget</option>
+                                <option>₹ 10L - 25L</option>
+                                <option>₹ 25L - 50L</option>
+                                <option>₹ 50L - 1Cr</option>
+                                <option>₹ 1Cr+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn-search">
+                        Find Property
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="intro" id="about">
+        <div class="container">
+            <div class="intro-grid">
+                <div class="reveal">
+                    <p class="intro-label">ROYAL ELITE</p>
+                    <h2 class="intro-heading">Your Property Journey,<br>Simplified.</h2>
+                    <p class="intro-text">Whether you're searching for your dream home, exploring an investment
+                        opportunity, or looking to sell your property, Royal Elite helps make the real-estate journey
+                        simple and focused.</p>
+                    <div class="intro-highlights">
+                        <div class="highlight-item">
+                            <div class="hl-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M3 10.5L12 3l9 7.5v9.5a1.5 1.5 0 0 1-1.5 1.5H4.5A1.5 1.5 0 0 1 3 20v-9.5z"/>
+                                    <path d="M9 21V12.5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1V21"/>
+                                    <path d="M12 7v1"/>
+                                    <circle cx="12" cy="7.5" r="0.75" fill="currentColor"/>
+                                </svg>
+                            </div>
+                            <h4>Property Buying</h4>
+                            <p>Expert guidance to find your ideal luxury home</p>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="hl-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="9" cy="12" r="6"/>
+                                    <path d="M14 9l7-5"/>
+                                    <path d="M17 4h4v4"/>
+                                    <circle cx="9" cy="12" r="2" fill="currentColor"/>
+                                    <path d="M3 21l6-6"/>
+                                </svg>
+                            </div>
+                            <h4>Property Selling</h4>
+                            <p>Maximize value with our strategic market reach</p>
+                        </div>
+                        <div class="highlight-item">
+                            <div class="hl-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2l7 4v6c0 5.25-3.5 9.74-7 11-3.5-1.26-7-5.75-7-11V6l7-4z"/>
+                                    <path d="M8 14l2.5-3 2 2 3.5-4"/>
+                                    <polyline points="13.5 9 16 9 16 11.5"/>
+                                </svg>
+                            </div>
+                            <h4>Investment Guidance</h4>
+                            <p>Data-driven insights for high-return investments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="intro-image-wrap reveal">
+                    <div class="intro-image-accent"></div>
+                    <div class="intro-image">
+                        <img src="royal-elite.webp" alt="Premium Property in Bengaluru">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED PROPERTIES -->
+    <section class="properties" id="properties">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">Explore Opportunities</p>
+                <h2 class="section-title">Explore Property Opportunities</h2>
+                <p class="section-subtitle">Discover our hand-picked collection of premium apartments, luxury villas,
+                    and prime plots in Bengaluru.</p>
+            </div>
+            <div class="property-grid">
+                <div class="property-card">
+                    <div class="property-card-img">
+                        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=700&q=85"
+                            alt="Luxury Apartment">
+                        <span class="property-badge">Apartment</span>
+                    </div>
+                    <div class="property-card-body">
+                        <div>
+                            <h3>Luxury 3 BHK Apartment</h3>
+                            <p class="property-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                                BTM Layout, Bengaluru
+                            </p>
+                        </div>
+                        <div class="property-card-footer">
+                            <p class="property-price">Price on Request</p>
+                            <a href="tel:06362907007" class="property-link">
+                                Enquire
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="property-card-img">
+                        <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=700&q=85"
+                            alt="Premium Villa">
+                        <span class="property-badge">Villa</span>
+                    </div>
+                    <div class="property-card-body">
+                        <div>
+                            <h3>Premium Luxury Villa</h3>
+                            <p class="property-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                                Sarjapur, Bengaluru
+                            </p>
+                        </div>
+                        <div class="property-card-footer">
+                            <p class="property-price">Price on Request</p>
+                            <a href="tel:06362907007" class="property-link">
+                                Enquire
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="property-card">
+                    <div class="property-card-img">
+                        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=700&q=85"
+                            alt="Residential Plot">
+                        <span class="property-badge">Plot</span>
+                    </div>
+                    <div class="property-card-body">
+                        <div>
+                            <h3>Prime Residential Plot</h3>
+                            <p class="property-location">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                    <circle cx="12" cy="10" r="3" />
+                                </svg>
+                                HSR Layout, Bengaluru
+                            </p>
+                        </div>
+                        <div class="property-card-footer">
+                            <p class="property-price">Price on Request</p>
+                            <a href="tel:06362907007" class="property-link">
+                                Enquire
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12" />
+                                    <polyline points="12 5 19 12 12 19" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY ROYAL ELITE -->
+    <section class="why" id="services">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-label">Why Choose Us</p>
+                <h2 class="section-title">A Better Way to Find Property</h2>
+                <p class="section-subtitle">Dedicated consultancy offering curated real estate solutions with complete
+                    transparency.</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="card-num">01</span>
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 18h20L19 7l-5 4.5L12 4 10 11.5 5 7z" />
+                            <circle cx="12" cy="4" r="1.2" fill="currentColor" />
+                            <circle cx="5" cy="7" r="1.2" fill="currentColor" />
+                            <circle cx="19" cy="7" r="1.2" fill="currentColor" />
+                            <path d="M4 18v2a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-2" />
+                        </svg>
+                    </div>
+                    <h3>Personalized Approach</h3>
+                    <p>Tailored property options matched to your exact lifestyle and investment requirements.</p>
+                </div>
+                <div class="why-card">
+                    <span class="card-num">02</span>
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3.5" />
+                            <circle cx="12" cy="10" r="1.2" fill="currentColor" />
+                        </svg>
+                    </div>
+                    <h3>Local Focus</h3>
+                    <p>Deep localized expertise in Bengaluru's most sought-after prime neighborhoods.</p>
+                </div>
+                <div class="why-card">
+                    <span class="card-num">03</span>
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                            <path d="M8 11.5h8M8 8.5h5M8 14.5h4" />
+                        </svg>
+                    </div>
+                    <h3>Clear Communication</h3>
+                    <p>Direct, honest, and transparent consultation from initial search to final registration.</p>
+                </div>
+                <div class="why-card">
+                    <span class="card-num">04</span>
+                    <div class="why-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <path d="M9 15l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <h3>Property Guidance</h3>
+                    <p>Comprehensive end-to-end guidance across legal verification and paperwork stages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="testimonials-header-wrap reveal">
+                <div class="testimonials-header-left">
+                    <p class="section-label">Client Reviews</p>
+                    <h2 class="section-title">What Our Clients Say</h2>
+                    <p class="section-subtitle">Read authentic feedback and experiences from property seekers and
+                        business owners in Bengaluru.</p>
+                </div>
+                <div class="testi-nav-btns">
+                    <button class="testi-btn prev-btn" id="testiPrevBtn" aria-label="Previous Testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+                    <button class="testi-btn next-btn" id="testiNextBtn" aria-label="Next Testimonial">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="testimonial-carousel-container" id="testimonialCarouselWrapper">
+                <div class="testimonial-track" id="testimonialTrack">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-top">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Good service excellent work ❤️"</p>
+                        <div class="testimonial-author-wrapper">
+                            <div class="testimonial-avatar">SB</div>
+                            <div class="testimonial-author-details">
+                                <span class="testimonial-author-name">S Bharath</span>
+                                <span class="testimonial-author-badge"><svg viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg> Verified Review</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-top">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Nice hospitality and having good options"</p>
+                        <div class="testimonial-author-wrapper">
+                            <div class="testimonial-avatar">FA</div>
+                            <div class="testimonial-author-details">
+                                <span class="testimonial-author-name">F Afzal Basha</span>
+                                <span class="testimonial-author-badge"><svg viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg> Verified Review</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-top">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Had a very positive experience with the maintenance agent......."
+                        </p>
+                        <div class="testimonial-author-wrapper">
+                            <div class="testimonial-avatar">SK</div>
+                            <div class="testimonial-author-details">
+                                <span class="testimonial-author-name">Sai Kumar</span>
+                                <span class="testimonial-author-badge"><svg viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg> Verified Review</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 4 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-top">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Highly recommended for finding the perfect commercial space in
+                            Bengaluru."</p>
+                        <div class="testimonial-author-wrapper">
+                            <div class="testimonial-avatar">RM</div>
+                            <div class="testimonial-author-details">
+                                <span class="testimonial-author-name">Rahul Menon</span>
+                                <span class="testimonial-author-badge"><svg viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg> Verified Review</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 5 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-top">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"The team at Royal Elite is very professional, helpful, and
+                            transparent."</p>
+                        <div class="testimonial-author-wrapper">
+                            <div class="testimonial-avatar">PS</div>
+                            <div class="testimonial-author-details">
+                                <span class="testimonial-author-name">Priya Sharma</span>
+                                <span class="testimonial-author-badge"><svg viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg> Verified Review</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 6 -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-card-top">
+                            <div class="testimonial-stars">★★★★★</div>
+                            <div class="testimonial-quote-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Found exactly what I was looking for. Great collection of premium
+                            properties!"</p>
+                        <div class="testimonial-author-wrapper">
+                            <div class="testimonial-avatar">VR</div>
+                            <div class="testimonial-author-details">
+                                <span class="testimonial-author-name">Vikram Reddy</span>
+                                <span class="testimonial-author-badge"><svg viewBox="0 0 24 24" fill="none"
+                                        stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg> Verified Review</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Indicator & Rating Bar -->
+            <div class="testimonial-bottom-bar reveal">
+                <div class="testimonial-dots" id="testimonialDots"></div>
+                <div class="testimonial-rating-badge">
+                    <span class="stars">★★★★★</span>
+                    <span class="score">5.0</span>
+                    <span class="label">Google Verified Rating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <!-- <section class="cta" id="contact">
+        <div class="cta-bg" id="ctaBg"></div>
+        <div class="cta-content">
+            <div class="cta-gold-line"></div>
+            <h2 class="cta-title">Your Next Property Starts Here.</h2>
+            <p class="cta-text">Tell us what you're looking for and let's explore the possibilities.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">
+                    Start Your Property Search
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                    </svg>
+                </a>
+                <a href="tel:06362907007" class="btn-secondary">Call 063629 07007</a>
+                <a href="https://www.google.com/local/place/fid/0x3bae15546902d691:0xb4ee38c49c9b1a32/photosphere?iu=https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid%3DjBXkYDw5vYgKFSW7C-HGbA%26cb_client%3Dlu.gallery.gps%26w%3D160%26h%3D106%26yaw%3D345.77017%26pitch%3D0%26thumbfov%3D100&ik=CAISFmpCWGtZRHc1dllnS0ZTVzdDLUhHYkE%3D"
+                    target="_blank" class="btn-secondary" style="border-color: rgba(255,255,255,0.4);">View Location</a>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- MAP LOCATION -->
+    <section class="map-location"
+        style="position: relative; overflow: hidden; border-top: 1px solid rgba(201, 168, 76, 0.2); border-bottom: 1px solid rgba(201, 168, 76, 0.2);">
+        <iframe
+            src="https://maps.google.com/maps?layer=c&panoid=jBXkYDw5vYgKFSW7C-HGbA&ie=UTF8&source=embed&output=svembed&cbp=13,345.77,,0,0"
+            width="100%" height="300" style="border:0; display: block; width: 100%; height: 300px;" allowfullscreen=""
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="logo.jfif" alt="Royal Elite Logo"
+                        style="height: 72px; width: auto; border-radius: 6px; margin-bottom: 16px;">
+                    <div class="brand-name">ROYAL ELITE</div>
+                    <div class="brand-tag">Business & Real Estate Consultant</div>
+                    <p style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px;">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 3px;">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                        <span>BTM Layout 2nd Stage, Bengaluru, Karnataka</span>
+                    </p>
+                    <a href="https://www.google.com/local/place/fid/0x3bae15546902d691:0xb4ee38c49c9b1a32/photosphere?iu=https://streetviewpixels-pa.googleapis.com/v1/thumbnail?panoid%3DjBXkYDw5vYgKFSW7C-HGbA%26cb_client%3Dlu.gallery.gps%26w%3D160%26h%3D106%26yaw%3D345.77017%26pitch%3D0%26thumbfov%3D100&ik=CAISFmpCWGtZRHc1dllnS0ZTVzdDLUhHYkE%3D"
+                        target="_blank"
+                        style="color: var(--gold); font-size: 13px; text-decoration: none; margin-bottom: 12px; display: inline-flex; align-items: center; gap: 5px;">
+                        <span>View 360° Virtual Tour</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                    <div class="footer-contact">
+                        <a href="tel:06362907007" style="display: inline-flex; align-items: center; gap: 8px;">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            063629 07007
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <a href="#home">Home</a>
+                    <a href="#properties">Properties</a>
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="#">Property Buying</a>
+                    <a href="#">Property Selling</a>
+                    <a href="#">Investment Guidance</a>
+                    <a href="#">Consultation</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Royal Elite. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#home">Home</a>
+                    <a href="#properties">Properties</a>
+                    <a href="#services">Services</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE STICKY FLOATING ACTION BAR -->
+    <div class="mobile-bottom-bar" id="mobileBottomBar">
+        <a href="tel:06362907007" class="mobile-action-btn call-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>Call Now</span>
+        </a>
+        <a href="https://wa.me/916362907007?text=Hi%20Royal%20Elite%2C%20I%20am%20interested%20in%20properties%20in%20Bengaluru." target="_blank" class="mobile-action-btn whatsapp-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+            </svg>
+            <span>WhatsApp</span>
+        </a>
+    </div>
+
+    <script>
+        // Performance-optimized Navbar and Active Link Scroll Handler
+        const navbar = document.getElementById('navbar');
+        const sections = Array.from(document.querySelectorAll('section[id]'));
+        const navLinks = Array.from(document.querySelectorAll('.nav-links a:not(.mobile-menu-cta)'));
+
+        let isScrollTicking = false;
+
+        function onScrollUpdate() {
+            const currentScroll = window.scrollY;
+            if (navbar) {
+                navbar.classList.toggle('scrolled', currentScroll > 40);
+            }
+
+            // Determine active section
+            let activeId = '';
+            for (let i = sections.length - 1; i >= 0; i--) {
+                if (currentScroll >= sections[i].offsetTop - 140) {
+                    activeId = sections[i].getAttribute('id');
+                    break;
+                }
+            }
+
+            if (activeId) {
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + activeId);
+                });
+            }
+
+            isScrollTicking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!isScrollTicking) {
+                window.requestAnimationFrame(onScrollUpdate);
+                isScrollTicking = true;
+            }
+        }, { passive: true });
+
+        // Mobile toggle
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinksMenu = document.getElementById('navLinks');
+        if (mobileToggle && navLinksMenu) {
+            mobileToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navLinksMenu.classList.toggle('open');
+                mobileToggle.classList.toggle('active');
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navLinksMenu.contains(e.target) && !mobileToggle.contains(e.target)) {
+                    navLinksMenu.classList.remove('open');
+                    mobileToggle.classList.remove('active');
+                }
+            });
+        }
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinksMenu) navLinksMenu.classList.remove('open');
+                if (mobileToggle) mobileToggle.classList.remove('active');
+            });
+        });
+
+        // Scroll reveal with IntersectionObserver
+        const revealElements = document.querySelectorAll('.reveal');
+        const cardElements = document.querySelectorAll('.property-card, .why-card');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // Cards with staggered reveal
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const index = Array.from(cardElements).indexOf(entry.target);
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, (index % 3) * 100);
+                    cardObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+        cardElements.forEach(el => cardObserver.observe(el));
+
+        // Testimonials Moving Carousel
+        (function () {
+            const track = document.getElementById('testimonialTrack');
+            const prevBtn = document.getElementById('testiPrevBtn');
+            const nextBtn = document.getElementById('testiNextBtn');
+            const dotsContainer = document.getElementById('testimonialDots');
+            const cards = document.querySelectorAll('.testimonial-card');
+            const wrapper = document.getElementById('testimonialCarouselWrapper');
+
+            if (!track || cards.length === 0) return;
+
+            let currentIndex = 0;
+            let autoTimer = null;
+
+            function getVisibleCount() {
+                if (window.innerWidth <= 768) return 1;
+                if (window.innerWidth <= 1024) return 2;
+                return 3;
+            }
+
+            function getMaxIndex() {
+                return Math.max(0, cards.length - getVisibleCount());
+            }
+
+            function renderDots() {
+                if (!dotsContainer) return;
+                dotsContainer.innerHTML = '';
+                const max = getMaxIndex();
+                for (let i = 0; i <= max; i++) {
+                    const dot = document.createElement('button');
+                    dot.className = `testi-dot ${i === currentIndex ? 'active' : ''}`;
+                    dot.setAttribute('aria-label', `Slide ${i + 1}`);
+                    dot.addEventListener('click', () => {
+                        currentIndex = i;
+                        updateCarousel();
+                        resetTimer();
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+
+            function updateCarousel() {
+                const max = getMaxIndex();
+                if (currentIndex > max) currentIndex = max;
+                if (currentIndex < 0) currentIndex = 0;
+
+                const firstCard = cards[0];
+                if (!firstCard) return;
+
+                const cardWidth = firstCard.getBoundingClientRect().width;
+                const computedStyle = window.getComputedStyle(track);
+                const gap = parseFloat(computedStyle.gap) || 24;
+                const moveAmount = currentIndex * (cardWidth + gap);
+
+                track.style.transform = `translateX(-${moveAmount}px)`;
+
+                // Update dots
+                const dots = dotsContainer.querySelectorAll('.testi-dot');
+                dots.forEach((dot, idx) => {
+                    dot.classList.toggle('active', idx === currentIndex);
+                });
+            }
+
+            function nextSlide() {
+                const max = getMaxIndex();
+                if (currentIndex >= max) {
+                    currentIndex = 0;
+                } else {
+                    currentIndex++;
+                }
+                updateCarousel();
+            }
+
+            function prevSlide() {
+                const max = getMaxIndex();
+                if (currentIndex <= 0) {
+                    currentIndex = max;
+                } else {
+                    currentIndex--;
+                }
+                updateCarousel();
+            }
+
+            function startTimer() {
+                stopTimer();
+                autoTimer = setInterval(nextSlide, 3600);
+            }
+
+            function stopTimer() {
+                if (autoTimer) {
+                    clearInterval(autoTimer);
+                    autoTimer = null;
+                }
+            }
+
+            function resetTimer() {
+                stopTimer();
+                startTimer();
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    resetTimer();
+                });
+            }
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    resetTimer();
+                });
+            }
+
+            if (wrapper) {
+                wrapper.addEventListener('mouseenter', stopTimer);
+                wrapper.addEventListener('mouseleave', startTimer);
+
+                // Touch support
+                let startX = 0;
+                let endX = 0;
+                wrapper.addEventListener('touchstart', (e) => {
+                    stopTimer();
+                    startX = e.changedTouches[0].screenX;
+                }, { passive: true });
+
+                wrapper.addEventListener('touchend', (e) => {
+                    endX = e.changedTouches[0].screenX;
+                    if (endX < startX - 45) {
+                        nextSlide();
+                    } else if (endX > startX + 45) {
+                        prevSlide();
+                    }
+                    startTimer();
+                }, { passive: true });
+            }
+
+            window.addEventListener('resize', () => {
+                renderDots();
+                updateCarousel();
+            });
+
+            // Initial render
+            renderDots();
+            updateCarousel();
+            startTimer();
+        })();
+    </script>
+</body>
+
+</html>
